@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 import userRoutes from "./routes/users"
 import authRoutes from "./routes/auth"
 import cookieParser from "cookie-parser"
+import path from "path"
 
 mongoose.connect(
   process.env.MONGODB_CONNECTION_STRING as string
@@ -26,6 +27,12 @@ app.get(
   async (req: Request, res: Response) => {
     res.json({ message: "hello from express endpoint" })
   }
+)
+
+app.use(
+  express.static(
+    path.join(__dirname, "../../frontend/dist")
+  )
 )
 
 app.use("/api/auth", authRoutes)

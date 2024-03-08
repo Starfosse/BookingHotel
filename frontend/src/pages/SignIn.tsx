@@ -82,7 +82,7 @@ const SigIn = () => {
         <span className="text-sm">
           Pas de compte ?
           <Link className="underline" to="/register">
-            Creer un compte ici
+            Créer un compte ici
           </Link>{" "}
         </span>
         <button
