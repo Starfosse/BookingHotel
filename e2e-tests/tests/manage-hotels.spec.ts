@@ -91,3 +91,39 @@ test("should display hotels", async ({ page }) => {
     page.getByRole("link", { name: "Add Hotel" })
   ).toBeVisible()
 })
+
+test("should edit hotel", async ({ page }) => {
+  await page.goto(`${UI_URL}/my-hotels`)
+
+  await page
+    .getByRole("link", { name: "Voir les détails" })
+    .click()
+
+  await page.waitForSelector('[name="name"]', {
+    state: "attached",
+  })
+  await expect(page.locator('[name="name"]')).toHaveValue(
+    "Dublin Getaways"
+  )
+  await page
+    .locator('[name="name"]')
+    .fill("Dublin Getaways UPDATED")
+  await page
+    .getByRole("button", { name: "Sauvegarder" })
+    .click()
+  await expect(
+    page.getByText("Hotel sauvegardé !")
+  ).toBeVisible()
+
+  await page.reload()
+
+  await expect(page.locator('[name="name"]')).toHaveValue(
+    "Dublin Getaways UPDATED"
+  )
+  await page
+    .locator('[name="name"]')
+    .fill("Dublin Getaways")
+  await page
+    .getByRole("button", { name: "Sauvegarder" })
+    .click()
+})
