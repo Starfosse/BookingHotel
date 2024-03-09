@@ -17,12 +17,12 @@ export const hotelTypes = [
 ]
 
 export const hotelFacilities = [
-  "Free WiFi",
+  "WiFi gratuit",
   "Parking",
-  "Airport Shuttle",
-  "Family Rooms",
-  "Non-Smoking Rooms",
-  "Outdoor Pool",
+  "Navette aéroport",
+  "Chambres familiales",
+  "Chambres non-fumeurs",
+  "Piscine extérieure",
   "Spa",
-  "Fitness Center",
+  "Centre de remise en forme",
 ]
