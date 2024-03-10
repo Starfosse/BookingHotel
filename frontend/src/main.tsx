@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from "react-query"
 import { AppContextProdiver } from "./contexts/AppContext.tsx"
+import { SearchContextProvider } from "./contexts/SearchContext.tsx"
 
 const queryCLient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,9 @@ ReactDOM.createRoot(
   <React.StrictMode>
     <QueryClientProvider client={queryCLient}>
       <AppContextProdiver>
-        <App />
+        <SearchContextProvider>
+          <App />
+        </SearchContextProvider>
       </AppContextProdiver>
     </QueryClientProvider>
   </React.StrictMode>
