@@ -3,8 +3,10 @@ import { useSearchContext } from "../contexts/SearchContext"
 import { MdTravelExplore } from "react-icons/md"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import { useNavigate } from "react-router"
 
 const SearchBar = () => {
+  const navigate = useNavigate()
   const search = useSearchContext()
 
   const [destination, setDestination] = useState<string>(
@@ -32,6 +34,7 @@ const SearchBar = () => {
       adultCount,
       childCount
     )
+    navigate("/search")
   }
 
   const minDate = new Date()
@@ -108,6 +111,14 @@ const SearchBar = () => {
           className="min-w-full bg-white p-2 focus:outline-none"
           wrapperClassName="min-w-full"
         />
+      </div>
+      <div className="flex gap-1">
+        <button className=" flex-1 bg-blue-600 text-white p-2 font-bold text-xl hover:bg-blue-500">
+          Chercher
+        </button>
+        <button className="flex-1 bg-red-600 text-white p-2 font-bold text-xl hover:bg-blue-500">
+          Rafraichir
+        </button>
       </div>
     </form>
   )

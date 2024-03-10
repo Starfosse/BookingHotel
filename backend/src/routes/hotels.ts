@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express"
 import Hotel from "../models/hotel"
-import { HoteSearchResponse } from "../shared/type"
+import { HotelSearchResponse } from "../shared/type"
 
 const router = express.Router()
 
@@ -19,7 +19,7 @@ router.get(
 
       const total = await Hotel.countDocuments()
 
-      const response: HoteSearchResponse = {
+      const response: HotelSearchResponse = {
         data: hotels,
         pagination: {
           total,
