@@ -4,7 +4,7 @@ import {
   HotelSearchResponse,
   HotelType,
 } from "../../backend/src/shared/type"
-import { URLSearchParams } from "url"
+// import { URLSearchParams } from "url"
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ""
 
@@ -57,7 +57,6 @@ export const validateToken = async () => {
       credentials: "include",
     }
   )
-  console.log(response.ok)
   if (!response.ok) {
     throw new Error("Token invalid")
   }
@@ -174,12 +173,9 @@ export const searchHotels = async (
     searchParams.childCOunt || ""
   )
   queryParams.append("page", searchParams.page || "")
-
   const response = await fetch(
-    `${API_BASE_URL}/api/hotel/search?${queryParams}`
+    `${API_BASE_URL}/api/hotels/search?${queryParams}`
   )
-
   if (!response.ok) throw new Error("Error fetching hotels")
-
   return response.json()
 }
