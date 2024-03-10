@@ -19,15 +19,11 @@ const SearchResultsCard = ({ hotel }: Props) => {
         <div>
           <div className="flex items-center">
             <span className="flex">
-              {Array.from({ length: hotel.starRating }).map(
-                () => (
-                  <AiFillStar className="fill-yellow-400" />
-                )
-              )}{" "}
+              {Array.from({ length: hotel.starRating }).map(() => (
+                <AiFillStar className="fill-yellow-400" />
+              ))}{" "}
             </span>
-            <span className="ml-1 text-sm">
-              {hotel.type}{" "}
-            </span>
+            <span className="ml-1 text-sm">{hotel.type} </span>
           </div>
           <Link
             to={`/detail/${hotel._id}`}
@@ -36,28 +32,21 @@ const SearchResultsCard = ({ hotel }: Props) => {
           </Link>
         </div>
         <div>
-          <div className="line-clamp-4">
-            {hotel.description}
-          </div>
+          <div className="line-clamp-4">{hotel.description}</div>
         </div>
         <div className="grid grid-cols-2 items-end whitespace-nowrap">
           <div className="flex gap-1 items-center">
-            {hotel.facilities
-              .slice(0, 3)
-              .map((facility) => (
-                <span className="bg-slate-300 p-2 rounded-lg font-bold text-xs whitespace-nowrap">
-                  {facility}{" "}
-                </span>
-              ))}
+            {hotel.facilities.slice(0, 3).map((facility) => (
+              <span className="bg-slate-300 p-2 rounded-lg font-bold text-xs whitespace-nowrap">
+                {facility}{" "}
+              </span>
+            ))}
             <span className="text-sm">
-              {hotel.facilities.length > 3 &&
-                `+${hotel.facilities.length - 3}`}{" "}
+              {hotel.facilities.length > 3 && `+${hotel.facilities.length - 3}`}{" "}
             </span>
           </div>
           <div className="flex flex-col items-end gap-1">
-            <span className="font-bold">
-              {hotel.pricePerNight}€ par nuit
-            </span>
+            <span className="font-bold">{hotel.pricePerNight}€ par nuit</span>
             <Link
               to={`/detail/${hotel._id}`}
               className="bg-blue-600 h-full text-white p-2 font-bold text-xl max-w-fit hover:bg-blue-500">

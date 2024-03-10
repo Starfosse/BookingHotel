@@ -9,31 +9,15 @@ const SearchBar = () => {
   const navigate = useNavigate()
   const search = useSearchContext()
 
-  const [destination, setDestination] = useState<string>(
-    search.destination
-  )
-  const [checkIn, setCheckIn] = useState<Date>(
-    search.checkIn
-  )
-  const [checkOut, setCheckOut] = useState<Date>(
-    search.checkOut
-  )
-  const [adultCount, setAdultCount] = useState<number>(
-    search.adultCount
-  )
-  const [childCount, setChildCount] = useState<number>(
-    search.childCount
-  )
+  const [destination, setDestination] = useState<string>(search.destination)
+  const [checkIn, setCheckIn] = useState<Date>(search.checkIn)
+  const [checkOut, setCheckOut] = useState<Date>(search.checkOut)
+  const [adultCount, setAdultCount] = useState<number>(search.adultCount)
+  const [childCount, setChildCount] = useState<number>(search.childCount)
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    search.saveSearchValues(
-      destination,
-      checkIn,
-      checkOut,
-      adultCount,
-      childCount
-    )
+    search.saveSearchValues(destination, checkIn, checkOut, adultCount, childCount)
     navigate("/search")
   }
 
@@ -50,9 +34,7 @@ const SearchBar = () => {
           placeholder="Où allez vous ?"
           className="text-md w-full focus:outline-none"
           value={destination}
-          onChange={(event) =>
-            setDestination(event.target.value)
-          }
+          onChange={(event) => setDestination(event.target.value)}
         />
       </div>
 
@@ -65,9 +47,7 @@ const SearchBar = () => {
             min={1}
             max={20}
             value={adultCount}
-            onChange={(event) =>
-              setAdultCount(parseInt(event.target.value))
-            }
+            onChange={(event) => setAdultCount(parseInt(event.target.value))}
           />
         </label>
         <label className="items-center flex">
@@ -78,9 +58,7 @@ const SearchBar = () => {
             min={0}
             max={20}
             value={childCount}
-            onChange={(event) =>
-              setChildCount(parseInt(event.target.value))
-            }
+            onChange={(event) => setChildCount(parseInt(event.target.value))}
           />
         </label>
       </div>
