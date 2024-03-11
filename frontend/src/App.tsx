@@ -20,7 +20,7 @@ function App() {
           element={
             <Layout>
               {" "}
-              <p>HomePage</p>{" "}
+              <p>home</p>{" "}
             </Layout>
           }
         />
