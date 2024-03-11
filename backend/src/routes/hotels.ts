@@ -49,6 +49,16 @@ router.get("/search", async (req: Request, res: Response) => {
   }
 })
 
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const hotels = await Hotel.find().sort("-lastupdated")
+    res.json(hotels)
+  } catch (error) {
+    console.log("error", error)
+    res.status(500).json({ message: "Error fetching hotels" })
+  }
+})
+
 router.get(
   "/:id",
   [param("id").notEmpty().withMessage("Hotel ID is required")],
@@ -82,7 +92,7 @@ router.post(
     const totalCost = hotel.pricePerNight * numberOfNights
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: totalCost,
+      amount: totalCost * 100,
       currency: "eur",
       metadata: {
         hotelId,

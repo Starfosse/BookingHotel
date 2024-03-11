@@ -14,9 +14,12 @@ type ToastMessage = {
 type AppContext = {
   showToast: (toastMessage: ToastMessage) => void
   isLoggedIn: boolean
+  stripePromise: Promise<Stripe | null>
 }
 
 const AppContext = React.createContext<AppContext | undefined>(undefined)
+
+const stripePromise = loadStripe(STRIPE_PUB_KEY)
 
 export const AppContextProdiver = ({ children }: { children: React.ReactNode }) => {
   const [toast, setToast] = useState<ToastMessage | undefined>(undefined)
@@ -30,6 +33,7 @@ export const AppContextProdiver = ({ children }: { children: React.ReactNode }) 
       value={{
         showToast: (toastMessage) => setToast(toastMessage),
         isLoggedIn: !isError,
+        stripePromise,
       }}>
       {toast && (
         <Toast
