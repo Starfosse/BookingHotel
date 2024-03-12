@@ -95,7 +95,7 @@ const SearchBar = () => {
           Chercher
         </button>
         <button className="flex-1 bg-red-600 text-white p-2 font-bold text-xl hover:bg-blue-500">
-          Rafraichir
+          Rafraîchir
         </button>
       </div>
     </form>
