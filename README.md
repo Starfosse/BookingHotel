@@ -6,4 +6,8 @@
 
 <img width="943" alt="produtPage2-BookHotel" src="https://github.com/Starfosse/BookingHotel/assets/77751009/e3a636c5-b273-4cc7-8e1b-de6784f12508">
 
+<img width="637" alt="form-addHotel2" src="https://github.com/Starfosse/BookingHotel/assets/77751009/3c9b1f65-1400-4f4f-96d3-fef9db2837c0">
+
+<img width="658" alt="form-addHotel1" src="https://github.com/Starfosse/BookingHotel/assets/77751009/97995366-ddb5-47ad-bf38-bf113c8823aa">
+
 <img width="950" alt="réservation-BookHotel" src="https://github.com/Starfosse/BookingHotel/assets/77751009/a73e826c-fc2f-4fa2-9464-9635a84e06fa">
