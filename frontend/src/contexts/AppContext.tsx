@@ -1,36 +1,32 @@
-import React, { useContext, useState } from "react";
-import Toast from "../components/Toast";
-import { useQuery } from "react-query";
-import * as apiClient from "../api-client";
-import { loadStripe, Stripe } from "@stripe/stripe-js";
+import React, { useContext, useState } from "react"
+import Toast from "../components/Toast"
+import { useQuery } from "react-query"
+import * as apiClient from "../api-client"
+import { loadStripe, Stripe } from "@stripe/stripe-js"
 
-const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUB_KEY || "";
+const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUB_KEY || ""
 
 type ToastMessage = {
-  message: string;
-  type: "SUCCESS" | "ERROR";
-};
+  message: string
+  type: "SUCCESS" | "ERROR"
+}
 
 type AppContext = {
-  showToast: (toastMessage: ToastMessage) => void;
-  isLoggedIn: boolean;
-  stripePromise: Promise<Stripe | null>;
-};
+  showToast: (toastMessage: ToastMessage) => void
+  isLoggedIn: boolean
+  stripePromise: Promise<Stripe | null>
+}
 
-const AppContext = React.createContext<AppContext | undefined>(undefined);
+const AppContext = React.createContext<AppContext | undefined>(undefined)
 
-const stripePromise = loadStripe(STRIPE_PUB_KEY);
+const stripePromise = loadStripe(STRIPE_PUB_KEY)
 
-export const AppContextProdiver = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [toast, setToast] = useState<ToastMessage | undefined>(undefined);
+export const AppContextProdiver = ({ children }: { children: React.ReactNode }) => {
+  const [toast, setToast] = useState<ToastMessage | undefined>(undefined)
 
   const { isError } = useQuery("validateToken", apiClient.validateToken, {
     retry: false,
-  });
+  })
 
   return (
     <AppContext.Provider
@@ -38,8 +34,7 @@ export const AppContextProdiver = ({
         showToast: (toastMessage) => setToast(toastMessage),
         isLoggedIn: !isError,
         stripePromise,
-      }}
-    >
+      }}>
       {toast && (
         <Toast
           message={toast.message}
@@ -49,10 +44,10 @@ export const AppContextProdiver = ({
       )}
       {children}
     </AppContext.Provider>
-  );
-};
+  )
+}
 
 export const useAppContext = () => {
-  const context = useContext(AppContext);
-  return context as AppContext;
-};
+  const context = useContext(AppContext)
+  return context as AppContext
+}
